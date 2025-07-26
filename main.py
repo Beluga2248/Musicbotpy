@@ -68,26 +68,26 @@ client.on('messageCreate', async message => {
                 selfDeaf: false, // Set to true if you want the bot to be deafened
             });
             console.log(`Joined voice channel: ${message.member.voice.channel.name}`);
-            message.channel.send(`Joined voice channel: **${message.member.voice.channel.name}**`);
+            message.channel.send(`<a:Yes:1011614293420150805> Joined voice channel: **${message.member.voice.channel.name}**`);
 
             // Subscribe the connection to the player
             connection.subscribe(player);
 
         } catch (error) {
             console.error('Error joining voice channel:', error);
-            message.channel.send('There was an error trying to join the voice channel.');
+            message.channel.send('<a:Wrong:1017416697168269372> There was an error trying to join the voice channel.');
         }
     }
 
     // --- Play Command ---
     else if (command === 'play') {
         if (!connection) {
-            return message.reply('I am not connected to a voice channel. Use `!join` first.');
+            return message.reply('<a:Wrong:1017416697168269372> I am not connected to a voice channel. Use `!join` first.');
         }
 
         const url = args[0];
         if (!url || !ytdl.validateURL(url)) {
-            return message.reply('Please provide a valid YouTube URL!');
+            return message.reply('<a:Wrong:1017416697168269372> Please provide a valid YouTube URL!');
         }
 
         try {
@@ -99,11 +99,11 @@ client.on('messageCreate', async message => {
             });
             player.play(resource);
             console.log(`Now playing: ${url}`);
-            message.channel.send(`Now playing: **${url}**`);
+            message.channel.send(`<a:Playing_Audio:1011614261560221726> Now playing: **${url}**`);
 
         } catch (error) {
             console.error('Error playing audio:', error);
-            message.channel.send('There was an error trying to play the audio. Make sure the URL is valid.');
+            message.channel.send('<a:Wrong:1017416697168269372>There was an error trying to play the audio. Make sure the URL is valid.');
         }
     }
 
@@ -113,10 +113,10 @@ client.on('messageCreate', async message => {
             player.stop(); // Stop any playing audio
             connection.destroy(); // Destroy the voice connection
             connection = null;
-            message.channel.send('Left the voice channel.');
+            message.channel.send('<a:Yes:1011614293420150805>Left the voice channel.');
             console.log('Left voice channel.');
         } else {
-            message.channel.send('I am not in a voice channel.');
+            message.channel.send('<a:Wrong:1017416697168269372>I am not in a voice channel.');
         }
     }
 
@@ -127,7 +127,7 @@ client.on('messageCreate', async message => {
             message.channel.send('Stopped current playback.');
             console.log('Playback stopped.');
         } else {
-            message.channel.send('Nothing is currently playing.');
+            message.channel.send('<a:Wrong:1017416697168269372>Nothing is currently playing.');
         }
     }
 });
