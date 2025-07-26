@@ -4,7 +4,7 @@ require('dotenv').config();
 const { Client, GatewayIntentBits, Collection } = require('discord.js');
 const { joinVoiceChannel, createAudioPlayer, createAudioResource, AudioPlayerStatus } = require('@discordjs/voice');
 const ytdl = require('ytdl-core');
-const ffmpegStatic = require('ffmpeg-static'); // This package helps find ffmpeg
+//const ffmpegStatic = require('ffmpeg-static'); // This package helps find ffmpeg
 
 // Check if token is loaded
 const TOKEN = process.env.DISCORD_TOKEN;
