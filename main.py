@@ -74,7 +74,7 @@ async def on_ready():
 @bot.command(name='join', help='Tells the bot to join the voice channel')
 async def join(ctx):
     if not ctx.message.author.voice:
-        await ctx.send(f"{ctx.message.author.name} is not connected to a voice channel.")
+        await ctx.send(f"<a:Wrong:1017416697168269372>{ctx.message.author.name} is not connected to a voice channel.")
         return
     
     channel = ctx.message.author.voice.channel
@@ -84,7 +84,7 @@ async def join(ctx):
 @bot.command(name='play', help='To play song')
 async def play(ctx, url):
     if not ctx.voice_client:
-        await ctx.send("I'm not in a voice channel. Use `!join` first.")
+        await ctx.send("<a:Wrong:1017416697168269372>I'm not in a voice channel. Use `!join` first.")
         return
 
     async with ctx.typing():
@@ -93,7 +93,7 @@ async def play(ctx, url):
             ctx.voice_client.play(player, after=lambda e: print(f'Player error: {e}') if e else None)
             await ctx.send(f'Now playing: {player.title}')
         except Exception as e:
-            await ctx.send(f"Error playing song: {e}")
+            await ctx.send(f"<a:Wrong:1017416697168269372>Error playing song: {e}")
             print(f"Error playing song: {e}")
 
 @bot.command(name='leave', help='To make the bot leave the voice channel')
