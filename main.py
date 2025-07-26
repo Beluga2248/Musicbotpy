@@ -91,7 +91,7 @@ async def play(ctx, url):
         try:
             player = await YTDLSource.from_url(url, loop=bot.loop, stream=True)
             ctx.voice_client.play(player, after=lambda e: print(f'Player error: {e}') if e else None)
-            await ctx.send(f'Now playing: {player.title}')
+            await ctx.send(f'<a:Playing_Audio:1011614261560221726>Now playing: {player.title}')
         except Exception as e:
             await ctx.send(f"<a:Wrong:1017416697168269372>Error playing song: {e}")
             print(f"Error playing song: {e}")
@@ -99,10 +99,10 @@ async def play(ctx, url):
 @bot.command(name='leave', help='To make the bot leave the voice channel')
 async def leave(ctx):
     if ctx.voice_client:
-        await ctx.send("Leaving voice channel.")
+        await ctx.send("<a:Yes:1011614293420150805>Leaving voice channel.")
         await ctx.voice_client.disconnect()
     else:
-        await ctx.send("I'm not in a voice channel.")
+        await ctx.send("<a:Wrong:1017416697168269372>I'm not in a voice channel.")
 
 @bot.command(name='stop', help='Stops the current song and clears the queue')
 async def stop(ctx):
@@ -110,8 +110,8 @@ async def stop(ctx):
         ctx.voice_client.stop()
         await ctx.send("Stopped playing.")
     elif ctx.voice_client:
-        await ctx.send("No song is currently playing.")
+        await ctx.send("<a:Wrong:1017416697168269372>No song is currently playing.")
     else:
-        await ctx.send("I'm not in a voice channel.")
+        await ctx.send("<a:Wrong:1017416697168269372>I'm not in a voice channel.")
 
 bot.run(TOKEN)
